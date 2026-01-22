@@ -1,0 +1,138 @@
+{
+  "fattura_elettronica_header": {
+    "dati_trasmissione": {
+      "id_trasmittente": {
+        "id_paese": "string",
+        "id_codice": "string"
+      },
+      "progressivo_invio": "string",
+      "formato_trasmissione": "string",
+      "codice_destinatario": "string",
+      "pec_destinatario": "string"
+    },
+    "cedente_prestatore": {
+      "id_fiscale_iva": {
+        "id_paese": "string",
+        "id_codice": "string"
+      },
+      "codice_fiscale": "string",
+      "denominazione": "string",
+      "nome": "string",
+      "cognome": "string",
+      "sede": {
+        "indirizzo": "string",
+        "numero_civico": "string",
+        "cap": "string",
+        "comune": "string",
+        "provincia": "string",
+        "nazione": "string"
+      },
+      "stabile_organizzazione": {
+        "indirizzo": "string",
+        "numero_civico": "string",
+        "cap": "string",
+        "comune": "string",
+        "provincia": "string",
+        "nazione": "string"
+      },
+      "rappresentante_fiscale": {
+        "id_fiscale_iva": {
+          "id_paese": "string",
+          "id_codice": "string"
+        },
+        "denominazione": "string",
+        "nome": "string",
+        "cognome": "string"
+      },
+      "iscrizione_rea": {
+        "ufficio": "string",
+        "numero_rea": "string",
+        "capitale_sociale": "string",
+        "socio_unico": "string",
+        "stato_liquidazione": "string"
+      },
+      "regime_fiscale": "string"
+    },
+    "cessionario_committente": {
+      "identificativi_fiscali": {
+        "id_fiscale_iva": {
+          "id_paese": "string",
+          "id_codice": "string"
+        },
+        "codice_fiscale": "string"
+      },
+      "altri_dati_identificativi": {
+        "denominazione": "string",
+        "nome": "string",
+        "cognome": "string",
+        "sede": {
+          "indirizzo": "string",
+          "numero_civico": "string",
+          "cap": "string",
+          "comune": "string",
+          "provincia": "string",
+          "nazione": "string"
+        },
+        "stabile_organizzazione": {
+          "indirizzo": "string",
+          "numero_civico": "string",
+          "cap": "string",
+          "comune": "string",
+          "provincia": "string",
+          "nazione": "string"
+        },
+        "rappresentante_fiscale": {
+          "id_fiscale_iva": {
+            "id_paese": "string",
+            "id_codice": "string"
+          },
+          "denominazione": "string",
+          "nome": "string",
+          "cognome": "string"
+        }
+      }
+    },
+    "soggetto_emittente": "string"
+  },
+  "fattura_elettronica_body": [
+    {
+      "dati_generali": {
+        "dati_generali_documento": {
+          "tipo_documento": "string",
+          "divisa": "string",
+          "data": "string",
+          "numero": "string",
+          "bollo_virtuale": "string"
+        },
+        "dati_fattura_rettificata": {
+          "numero_fr": "string",
+          "data_fr": "string",
+          "elementi_rettificati": "string"
+        }
+      },
+      "dati_beni_servizi": [
+        {
+          "descrizione": "string",
+          "importo": "string",
+          "dati_iva": {
+            "imposta": "string",
+            "aliquota": "string"
+          },
+          "natura": "string",
+          "riferimento_normativo": "string"
+        }
+      ],
+      "allegati": [
+        {
+          "nome_attachment": "string",
+          "algoritmo_compressione": "string",
+          "formato_attachment": "string",
+          "descrizione_attachment": "string",
+          "attachment": null
+        }
+      ]
+    }
+  ]
+}
+
+

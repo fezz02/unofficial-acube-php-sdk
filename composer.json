@@ -1,0 +1,70 @@
+{
+    "name": "fezz/unofficial-acube-php-sdk",
+    "description": "Unofficial PHP SDK for the A-Cube e-invoicing API, providing integration with the Common Management API and Italy-specific e-invoicing services.",
+    "type": "library",
+    "license": "MIT",
+    "homepage": "https://github.com/fezz02/unofficial-acube-php-sdk",
+    "support": {
+        "issues": "https://github.com/fezz02/unofficial-acube-php-sdk/issues",
+        "source": "https://github.com/fezz02/unofficial-acube-php-sdk"
+    },
+    "authors": [
+        {
+            "name": "fezz02"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "saloonphp/saloon": "^3.14"
+    },
+    "autoload": {
+        "psr-4": {
+            "Fezz\\Acube\\Sdk\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Fezz\\Acube\\Sdk\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "preferred-install": "dist",
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "require-dev": {
+        "laravel/pint": "^1.25",
+        "peckphp/peck": "^0.2",
+        "pestphp/pest": "^4.0",
+        "pestphp/pest-plugin-type-coverage": "^4.0",
+        "phpstan/phpdoc-parser": "^2.2",
+        "phpstan/phpstan": "^2.1",
+        "rector/rector": "^2.2",
+        "symfony/var-dumper": "^7.3"
+    },
+    "scripts": {
+        "lint": [
+            "rector",
+            "pint"
+        ],
+        "test:type-coverage": "pest --parallel --type-coverage --min=100",
+        "test:refactor": [
+            "rector --dry-run"
+        ],
+        "test:lint": [
+            "pint --test"
+        ],
+        "test:unit": "pest --parallel --coverage --min=100",
+        "test:types": "phpstan",
+        "test:typos": "peck",
+        "test": [
+            "@test:typos",
+            "@test:lint",
+            "@test:types",
+            "@test:type-coverage",
+            "@test:unit"
+        ]
+    }
+}

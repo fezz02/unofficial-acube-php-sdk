@@ -1,0 +1,49 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  tests:
+    name: Tests (${{ matrix.dependency-version }})
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: true
+      matrix:
+        dependency-version: [prefer-lowest, prefer-stable]
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup PHP 8.3
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.3
+          tools: composer:v2
+          coverage: xdebug
+
+      - name: Install Aspell
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y aspell aspell-en
+
+      - name: Cache Composer
+        uses: actions/cache@v5
+        with:
+          path: vendor
+          key: composer-${{ runner.os }}-${{ matrix.dependency-version }}-${{ hashFiles('composer.lock') }}
+          restore-keys: |
+            composer-${{ runner.os }}-${{ matrix.dependency-version }}-
+            composer-${{ runner.os }}-
+
+      - name: Install dependencies
+        run: composer update --${{ matrix.dependency-version }} --no-interaction --no-progress --prefer-dist
+
+      - name: Run tests
+        run: composer test
